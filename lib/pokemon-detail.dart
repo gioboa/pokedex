@@ -31,6 +31,19 @@ class PokemonDetail extends StatelessWidget {
                   ),
                   Text("Height: ${pokemon.height}"),
                   Text("Weight: ${pokemon.weight}"),
+                  Text(
+                    "Types",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: pokemon.type
+                        .map((t) => FilterChip(
+                            backgroundColor: Colors.amber,
+                            label: Text(t),
+                            onSelected: (b) {}))
+                        .toList(),
+                  ),
                 ],
               ),
             ),
