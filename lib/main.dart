@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pokedex/pokemon-detail.dart';
 import 'package:pokedex/pokemons.dart';
 
 void main() => runApp(MyApp());
@@ -36,7 +37,6 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     fetchData();
   }
 
@@ -66,7 +66,12 @@ class HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(2.0),
                         child: InkWell(
                           onTap: () {
-                            print("Poke ${poke.name}");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PokemonDetail(
+                                          pokemon: poke,
+                                        )));
                           },
                           child: Hero(
                             tag: poke.img,
