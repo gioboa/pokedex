@@ -58,12 +58,20 @@ class PokemonDetail extends StatelessWidget {
                             onSelected: (b) {}))
                         .toList(),
                   ),
-                  Text("Next Evolution",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  pokemon.nextEvolution != null
+                      ? Text("Next Evolution",
+                          style: TextStyle(fontWeight: FontWeight.bold))
+                      : Text(""),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon.nextEvolution == null
-                        ? <Widget>[Text("This is the final evolution")]
+                        ? <Widget>[
+                            Text(
+                              "This is the final evolution",
+                              style: TextStyle(
+                                  color: Colors.red[600], fontSize: 25),
+                            )
+                          ]
                         : pokemon.nextEvolution
                             .map((n) => FilterChip(
                                   backgroundColor: Colors.green,
